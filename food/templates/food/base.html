@@ -1,13 +1,29 @@
-{% for item in item_list %}
+<!DOCTYPE html>
+<html lang="en">
 
-<ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Document</title>
+</head>
 
-    <li>
-        <!-- <a href="/food/{{ item.id }}">{{item.id}} --- {{item.item_name}}</a> -->
-        <a href="{% url 'detail' item.id %}">{{item.id}} --- {{item.item_name}}</a> 
-    </li>
-</ul>
+<body>
+
+    <nav class="navbar navbar-dark bg-dark">
+        <a href="#" class="navbar-brand"> FoodAPP</a>
+        <div class="navbar">
+            <a href="#" class="nav-item nav-link">Add Item</a>
+            <a href="#" class="nav-item nav-link">Delete Item</a>
+            <a href="#" class="nav-item nav-link">View Item</a>
+        </div>
+    </nav>
+
+    {% block body %}
+    {% endblock %}
 
 
+</body>
 
-{% endfor %}
+</html>

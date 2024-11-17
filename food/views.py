@@ -9,7 +9,7 @@ def index(request):
         "item_list": item_list
     }
 
-    return render(request, 'food/base.html', context)
+    return render(request, 'food/index.html', context)
 
 def item(request):
     return HttpResponse("This is an item view.")
