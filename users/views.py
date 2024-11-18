@@ -3,6 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 
 def register(request):
+    # Check POST or GET
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():
