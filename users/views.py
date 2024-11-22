@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from .forms import RegisterForm
+from django.contrib.auth.models import User
 
 def register(request):
     # Check POST or GET
@@ -15,4 +16,10 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'users/register.html', {"form": form})
+
+def profile_page(request):
+    # print("REQUEST =======", )
+    user = User.objects.get(username=request.user)
+    return render(request, 'users/profile.html', {"user": user})
+
 
