@@ -17,37 +17,30 @@ def index(request):
     return render(request, 'food/index.html', context)
 
 
-
+## Class based view
 class IndexView(ListView):
     model = Item
     template_name = 'food/index.html'
     context_object_name = 'item_list'
 
+## Feature based view
+# def item(request):
+#     return HttpResponse("This is an item view.")
 
-def item(request):
-    return HttpResponse("This is an item view.")
-
-
-def detail(request, item_id):
-    item = Item.objects.get(pk=item_id)
-    
-    context = {
-        "item": item
-    }
-    return render(request, 'food/detail.html', context)
 
 class FoodDetail(DetailView):
     model = Item
     template_name = 'food/detail.html'
 
-def create_item(request):
-    form = ItemForm(request.POST or None)
 
-    if form.is_valid():
-        form.save()
-        return redirect('food:index')
+# def detail(request, item_id):
+#     item = Item.objects.get(pk=item_id)
     
-    return render(request, 'food/item-form.html', {'form': form})
+#     context = {
+#         "item": item
+#     }
+#     return render(request, 'food/detail.html', context)
+
 
 class CreateItem(CreateView):
     model = Item
@@ -58,6 +51,17 @@ class CreateItem(CreateView):
         form.instance.user_name = self.request.user
 
         return super().form_valid(form)
+    
+
+# def create_item(request):
+#     form = ItemForm(request.POST or None)
+
+#     if form.is_valid():
+#         form.save()
+#         return redirect('food:index')
+    
+#     return render(request, 'food/item-form.html', {'form': form})
+
 
 
 def update_item(request, item_id):
